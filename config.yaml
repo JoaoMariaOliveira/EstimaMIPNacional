@@ -1,0 +1,96 @@
+# ============================================================================================
+# General parameters
+# ============================================================================================
+# sDirectoryInput - Pasta de entrada de dados
+# sDirectoryOutput - Pasta de Saída de dados
+# sFileStates - Nome do arquico contendoa tabela de estados
+# sSheetIntermedConsum  - Planilha de consumo intermediário
+# sSheetDemand          - Planilha da demanda
+# sSheetValueAdded      - Planilha do Valor adicionado
+# sSheetOffer           - Planilha da oferta
+# sSheetProduction      - Planilha da produção
+# sSheetImport          - Planilha de importação
+sDirectoryInput: './Input/'
+sDirectoryOutput: './Output/'
+
+
+sSheetIntermedConsum: 'CI'
+sSheetDemand: 'demanda'
+sSheetAddedValue: 'VA'
+sSheetOffer: 'oferta'
+sSheetProduction: 'producao'
+sSheetImport: 'importacao'
+
+# nColsDemand - Número de Colunas da demanda na tabela demanda do IBGE
+# nColsDemandEach - Número de Colunas da demanda por cada estado no modelo regional
+# nColsOffer - Número de Colunas da oferta na tabela de oferta do IBGE
+# nRowsAV - Número de linhas do VA na tabela VA do IBGE
+
+# nColExport - Numero da coluna de exportação na tabela oferta
+# nColFBCF - Numero da coluna de FCBF na tabela oferta
+# nColStockVar - Numero da coluna de variação de estoque na tabela oferta
+# nColMarginTrade = Numero da coluna da margem de comércio na tabela oferta
+# nColMarginTransport = Numero da coluna da margem de transporte na tabela oferta
+# nColIPI = Numero da coluna do IPI na tabela oferta
+# nColICMS = Numero da coluna do ICMS na tabela oferta
+# nColOtherTaxes = Numero da coluna dos outros impostos  na tabela oferta
+# nColImport = Numero da coluna dos dados de importacao na tabela oferta
+# nColImportTax = Numero da coluna dos impostos de importacao na tabela oferta
+
+nColsDemand: 8
+nColsDemandEach: 6
+nColsOffer: 9
+nRowsAV: 14
+nColExport: 0
+nColISFLSFConsum : 1
+nColGovConsum : 2
+nColFBCF: 4
+nColStockVar: 5
+nColMarginTrade: 1
+nColMarginTransport: 2
+nColIPI: 4
+nColICMS: 5
+nColOtherTaxes: 6
+nColImport: 0
+nColImportTax: 3
+
+# ============================================================================================
+# parameters of Building Regional I-O
+# ============================================================================================
+# nDimension - tamanho da diensão da matriz Insumo produto
+#   Valores possíveis:  0 - 12x12; 1 - 20x20; 2 - 107X51; 3 - 128x68
+
+nDimension: 3
+nYear: 2011
+
+# ============================================================================================
+# parameters of adjust margins
+# ============================================================================================
+# lAdjustMargins - Adjust trade margins and transport margins
+# True  - adjust
+# False - dont adjust
+# mAjust - controla o ajuste por tipo de  margem
+#    1 - faz o ajuste
+#    0 - não faz
+# posição 0- margem de Comércio
+# posição 1- margem de transporte
+
+# vetores contendo as colunas inicial e final para o ajuste de margens
+# posição 0 - tamanho 12x12;
+#         1 - 20x20;
+#         2 - 107X51;
+#         3 - 128x68
+# vRowsTrade  - Números das linhas (inicial e final), dos produtos relacionados ao comercio
+# vRowTransp - Números das linhas (inicial e final), dos produtos reacionados ao  tranporte
+# vColsTrade  - Números das colunas (inicial e final), das atividades reacionadas ao comercio
+# vColsTransp - Números das  colunas (inicial e final), das atividades reacionadas ao  tranporte
+#  - a posição em cada vetor é dada por nDimensao ( Tamanho da MIP)
+
+lAdjustMargins : True
+mAdjust: [1,0]
+vProducts: [12, 20, 107, 128]
+vSectors: [12, 20,  51,  68]
+vRowsTrade: [[5, 5], [6, 6], [88, 88], [92, 93]]
+vRowsTransp: [[6, 6], [7, 7], [89, 90], [94, 97]]
+vColsTrade: [[5, 5], [6, 6], [36, 36], [40, 41]]
+vColsTransp: [[6, 6], [7, 7], [37, 37], [42, 44]]
