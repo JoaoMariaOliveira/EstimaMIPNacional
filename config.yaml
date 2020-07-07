@@ -86,7 +86,7 @@ nYear: 2011
 # vColsTransp - Números das  colunas (inicial e final), das atividades reacionadas ao  tranporte
 #  - a posição em cada vetor é dada por nDimensao ( Tamanho da MIP)
 
-lAdjustMargins : True
+lAdjustMargins : False
 mAdjust: [1,0]
 vProducts: [12, 20, 107, 128]
 vSectors: [12, 20,  51,  68]

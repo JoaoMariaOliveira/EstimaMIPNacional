@@ -317,6 +317,10 @@ if __name__ == '__main__':
     sTimeIntermediate = time.localtime()
     print(time.strftime("%d/%b/%Y - %H:%M:%S",sTimeIntermediate), " - Creating Bm, M, T, W and I-O Matrix")
     print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+    mAConsNat =np.zeros([nSectors, nSectors], dtype=float)
+    vZTotCol = np.sum(mZNat,axis=0)
+    for i in range(nSectors):
+        mAConsNat[:,i] = mZNat[:,i] / vZTotCol[i]
 
     # Calculating Bm  - National and Regional
     mBmNat = np.zeros([nProducts, nSectors], dtype=float)
@@ -333,6 +337,7 @@ if __name__ == '__main__':
     for s in range(nSectors):
         vMIntConsNat[0,s] = sum(mImportNat[0:nProducts, s])
 
+    #mImportacao = np.dot()
     for s in range(nColsDemandEach):
         vMDemandNat[0,s] = sum(mImportNat[0:nProducts, nSectors+1+s])
 
